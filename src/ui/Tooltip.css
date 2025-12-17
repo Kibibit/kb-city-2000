@@ -1,0 +1,173 @@
+/**
+ * Tooltip Component Styles
+ */
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  background: var(--bg-surface-translucent);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg);
+  pointer-events: none;
+  min-width: 140px;
+  max-width: 200px;
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tooltip-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tooltip-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tooltip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tooltip-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.tooltip-status.status-ok {
+  color: var(--status-success);
+}
+
+.tooltip-status.status-warning {
+  color: var(--status-error);
+}
+
+.tooltip-status.status-neutral {
+  color: var(--text-muted);
+}
+
+/* Crime level color coding */
+.tooltip-crime.crime-none {
+  color: var(--status-success);
+}
+
+.tooltip-crime.crime-low {
+  color: #8bc34a; /* Light green */
+}
+
+.tooltip-crime.crime-medium {
+  color: #ffc107; /* Yellow/amber */
+}
+
+.tooltip-crime.crime-high {
+  color: #ff9800; /* Orange */
+}
+
+.tooltip-crime.crime-extreme {
+  color: var(--status-error);
+}
+
+/* Pollution level color coding (brown/gray gradient) */
+.tooltip-pollution.pollution-none {
+  color: var(--status-success);
+}
+
+.tooltip-pollution.pollution-low {
+  color: #8bc34a; /* Light green */
+}
+
+.tooltip-pollution.pollution-medium {
+  color: #8b7765; /* Light brown */
+}
+
+.tooltip-pollution.pollution-high {
+  color: #6b543f; /* Brown */
+}
+
+.tooltip-pollution.pollution-extreme {
+  color: #4f3d2e; /* Dark brown */
+}
+
+.status-icon {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-text {
+  flex: 1;
+}
+
+.tooltip-hints {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tooltip-hint {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Abandoned building styles */
+.tooltip-abandoned {
+  border-color: var(--status-error);
+  background: rgba(30, 20, 20, 0.95);
+}
+
+.tooltip-abandoned-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--status-error);
+  color: white;
+  padding: 4px 8px;
+  margin: -8px -12px 8px -12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.abandoned-icon {
+  font-size: 12px;
+}
+
+.abandoned-text {
+  color: white;
+}
+
+.tooltip-status.status-error {
+  color: var(--status-error);
+}
+
+.tooltip-status.status-info {
+  color: var(--status-info, #2196F3);
+}
+
+.tooltip-abandonment-reason {
+  background: rgba(244, 67, 54, 0.15);
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}

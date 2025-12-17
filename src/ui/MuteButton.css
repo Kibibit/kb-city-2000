@@ -1,0 +1,47 @@
+/**
+ * MuteButton Component Styles
+ */
+
+.mute-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: var(--panel-bg, rgba(15, 15, 30, 0.95));
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.mute-button:hover {
+  background: var(--panel-bg-hover, rgba(30, 30, 50, 0.95));
+  transform: scale(1.05);
+}
+
+.mute-button:active {
+  transform: scale(0.95);
+}
+
+.mute-button.muted {
+  opacity: 0.7;
+}
+
+.mute-button-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .mute-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mute-button-icon {
+    font-size: 18px;
+  }
+}

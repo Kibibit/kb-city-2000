@@ -1,0 +1,453 @@
+/**
+ * SaveDialog Component Styles
+ *
+ * Modal dialog for saving game state.
+ * Dark theme with consistent styling from the design system.
+ */
+
+/* =============================================================================
+   Backdrop
+   ============================================================================= */
+
+.save-dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-modal);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: var(--bg-overlay);
+  backdrop-filter: blur(4px);
+  
+  animation: fade-in 0.2s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* =============================================================================
+   Dialog Container
+   ============================================================================= */
+
+.save-dialog {
+  width: 100%;
+  max-width: 440px;
+  max-height: 80vh;
+  
+  display: flex;
+  flex-direction: column;
+  
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  
+  animation: slide-up 0.25s ease;
+  overflow: hidden;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   Header
+   ============================================================================= */
+
+.save-dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  
+  background: var(--bg-surface-elevated);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.save-dialog-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.save-dialog-title {
+  flex: 1;
+  margin: 0;
+  
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.save-dialog-close {
+  width: 32px;
+  height: 32px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-secondary);
+  cursor: pointer;
+  
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.save-dialog-close:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* =============================================================================
+   Content Area
+   ============================================================================= */
+
+.save-dialog-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =============================================================================
+   Input Group
+   ============================================================================= */
+
+.save-dialog-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.save-dialog-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.save-dialog-input {
+  width: 100%;
+  padding: 10px 14px;
+  
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  
+  font-size: 15px;
+  color: var(--text-primary);
+  
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.save-dialog-input::placeholder {
+  color: var(--text-muted);
+}
+
+.save-dialog-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.2);
+}
+
+/* =============================================================================
+   Slot Counter
+   ============================================================================= */
+
+.save-dialog-slots {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  
+  padding: 8px 12px;
+  
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+}
+
+.save-dialog-slots-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.save-dialog-slots-warning {
+  font-size: 11px;
+  color: var(--status-warning);
+}
+
+/* =============================================================================
+   Saves List
+   ============================================================================= */
+
+.save-dialog-saves {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.save-dialog-saves-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.save-dialog-saves-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  
+  padding-right: 4px;
+}
+
+/* =============================================================================
+   Save Item
+   ============================================================================= */
+
+.save-dialog-save-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  
+  padding: 12px 14px;
+  
+  background: var(--bg-input);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.save-dialog-save-item:hover {
+  background: var(--bg-hover);
+}
+
+.save-dialog-save-item.selected {
+  background: rgba(74, 144, 217, 0.15);
+  border-color: var(--brand-primary);
+}
+
+.save-dialog-save-item.deleting {
+  background: var(--status-error-bg);
+  border-color: var(--status-error);
+}
+
+.save-item-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.save-item-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.save-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.save-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.save-item-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.save-item-date {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.save-item-delete {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  
+  font-size: 16px;
+  cursor: pointer;
+  
+  transition: background var(--transition-fast);
+}
+
+.save-item-delete:hover {
+  background: rgba(244, 67, 54, 0.2);
+}
+
+.save-item-delete.confirm {
+  background: rgba(244, 67, 54, 0.3);
+  animation: pulse-warning 0.5s ease infinite alternate;
+}
+
+@keyframes pulse-warning {
+  from {
+    background: rgba(244, 67, 54, 0.2);
+  }
+  to {
+    background: rgba(244, 67, 54, 0.4);
+  }
+}
+
+/* =============================================================================
+   Empty State
+   ============================================================================= */
+
+.save-dialog-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  
+  padding: 32px 16px;
+  
+  background: var(--bg-input);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-default);
+}
+
+.save-dialog-empty-icon {
+  font-size: 32px;
+  opacity: 0.5;
+}
+
+.save-dialog-empty-text {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* =============================================================================
+   Footer
+   ============================================================================= */
+
+.save-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  
+  padding: 16px 20px;
+  
+  background: var(--bg-surface-elevated);
+  border-top: 1px solid var(--border-default);
+}
+
+.save-dialog-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  
+  padding: 10px 20px;
+  
+  border: none;
+  border-radius: var(--radius-md);
+  
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.save-dialog-btn:active {
+  transform: scale(0.98);
+}
+
+.save-dialog-btn-cancel {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.save-dialog-btn-cancel:hover {
+  background: var(--bg-active);
+  color: var(--text-primary);
+}
+
+.save-dialog-btn-save {
+  background: var(--brand-primary);
+  color: var(--text-primary);
+}
+
+.save-dialog-btn-save:hover:not(:disabled) {
+  background: var(--brand-primary-hover);
+}
+
+.save-dialog-btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
+
+@media (max-width: 480px) {
+  .save-dialog {
+    max-width: calc(100% - 32px);
+    margin: 16px;
+  }
+  
+  .save-dialog-content {
+    padding: 16px;
+  }
+  
+  .save-dialog-header,
+  .save-dialog-footer {
+    padding: 12px 16px;
+  }
+  
+  .save-dialog-saves-list {
+    max-height: 150px;
+  }
+}

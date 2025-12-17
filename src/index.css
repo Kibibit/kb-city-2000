@@ -1,0 +1,540 @@
+/**
+ * SimCity Browser Game - Global Styles
+ * 
+ * Base reset and dark theme styling for the game UI
+ */
+
+/* =============================================================================
+   CSS Reset & Base Styles
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Prevent any overflow that could cause layout shifts */
+  overflow: hidden;
+}
+
+body {
+  /* Full viewport */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  
+  /* Typography */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  
+  /* Dark theme */
+  background-color: #0f0f1a;
+  color: #ffffff;
+  
+  /* Smooth font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent text selection during game interactions */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* =============================================================================
+   Root Element
+   ============================================================================= */
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* =============================================================================
+   App Container
+   ============================================================================= */
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #0f0f1a;
+}
+
+/* =============================================================================
+   Game Canvas Container
+   ============================================================================= */
+
+.game-canvas-container {
+  flex: 1;
+  position: relative;
+  background-color: #1a1a2e;
+}
+
+.game-canvas-container canvas {
+  display: block;
+}
+
+/* =============================================================================
+   Prevent Selection During Drag
+   ============================================================================= */
+
+.game-canvas-container {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* =============================================================================
+   Cursor States
+   ============================================================================= */
+
+.game-canvas-container {
+  cursor: grab;
+}
+
+.game-canvas-container:active {
+  cursor: grabbing;
+}
+
+/* =============================================================================
+   CSS Variables - Complete Design System
+   See: docs/simcity-browser-game/design-system.md
+   ============================================================================= */
+
+:root {
+  /* =========================================================================
+     Brand Colors
+     ========================================================================= */
+  --brand-primary: #4A90D9;
+  --brand-primary-hover: #5A9FE9;
+  --brand-primary-active: #3A80C9;
+  --brand-secondary: #1E1E28;
+  --brand-accent: #FFB84D;
+
+  /* =========================================================================
+     Backgrounds
+     ========================================================================= */
+  --bg-app: #0F0F1A;
+  --bg-surface: #1E1E28;
+  --bg-surface-elevated: rgba(40, 40, 55, 0.98);
+  --bg-surface-translucent: rgba(30, 30, 40, 0.95);
+  --bg-input: rgba(0, 0, 0, 0.3);
+  --bg-hover: rgba(255, 255, 255, 0.08);
+  --bg-active: rgba(255, 255, 255, 0.12);
+  --bg-overlay: rgba(0, 0, 0, 0.7);
+  
+  /* Legacy aliases */
+  --bg-primary: rgba(30, 30, 40, 0.95);
+  --bg-secondary: #0F0F1A;
+  --bg-elevated: rgba(40, 40, 55, 0.98);
+
+  /* =========================================================================
+     Text Colors
+     ========================================================================= */
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-disabled: rgba(255, 255, 255, 0.3);
+  --text-inverse: #14141C;
+
+  /* =========================================================================
+     Border Colors
+     ========================================================================= */
+  --border-default: rgba(100, 100, 120, 0.3);
+  --border-hover: rgba(100, 100, 120, 0.5);
+  --border-focus: #4A90D9;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+
+  /* =========================================================================
+     Accent Colors (Legacy aliases)
+     ========================================================================= */
+  --accent-primary: #4A90D9;
+  --accent-primary-hover: #5A9FE9;
+  --accent-primary-active: #3A80C9;
+
+  /* =========================================================================
+     Status Colors
+     ========================================================================= */
+  --status-success: #4CAF50;
+  --status-success-light: #66BB6A;
+  --status-success-dark: #388E3C;
+  --status-success-bg: rgba(76, 175, 80, 0.15);
+
+  --status-warning: #FF9800;
+  --status-warning-light: #FFB74D;
+  --status-warning-dark: #F57C00;
+  --status-warning-bg: rgba(255, 152, 0, 0.15);
+
+  --status-error: #F44336;
+  --status-error-light: #EF5350;
+  --status-error-dark: #D32F2F;
+  --status-error-bg: rgba(244, 67, 54, 0.15);
+  
+  /* Legacy alias */
+  --status-danger: #F44336;
+  --status-danger-bg: rgba(244, 67, 54, 0.15);
+
+  --status-info: #2196F3;
+  --status-info-light: #42A5F5;
+  --status-info-dark: #1976D2;
+  --status-info-bg: rgba(33, 150, 243, 0.15);
+
+  /* =========================================================================
+     Terrain Colors
+     ========================================================================= */
+  /* Grass */
+  --terrain-grass: #4A7C31;
+  --terrain-grass-light: #5D9B3E;
+  --terrain-grass-dark: #3A6225;
+  --terrain-grass-accent: #6BB848;
+
+  /* Water */
+  --terrain-water: #2563EB;
+  --terrain-water-light: #3B82F6;
+  --terrain-water-dark: #1D4ED8;
+  --terrain-water-accent: #0EA5E9;
+
+  /* Future Terrain (Reserved) */
+  --terrain-sand: #D4A574;
+  --terrain-forest: #2D5016;
+  --terrain-rock: #6B7280;
+  --terrain-dirt: #92400E;
+
+  /* =========================================================================
+     Zone Colors - Residential
+     ========================================================================= */
+  --zone-residential: #90EE90;
+  --zone-residential-light: #B8F5B8;
+  --zone-residential-medium: #66D966;
+  --zone-residential-dark: #2E7D32;
+  --zone-residential-bg: rgba(144, 238, 144, 0.4);
+  --zone-residential-border: rgba(144, 238, 144, 0.8);
+
+  /* =========================================================================
+     Zone Colors - Commercial
+     ========================================================================= */
+  --zone-commercial: #6495ED;
+  --zone-commercial-light: #93B8F5;
+  --zone-commercial-medium: #4A7DD9;
+  --zone-commercial-dark: #1565C0;
+  --zone-commercial-bg: rgba(100, 149, 237, 0.4);
+  --zone-commercial-border: rgba(100, 149, 237, 0.8);
+
+  /* =========================================================================
+     Zone Colors - Industrial
+     ========================================================================= */
+  --zone-industrial: #FFD700;
+  --zone-industrial-light: #FFE44D;
+  --zone-industrial-medium: #E6C200;
+  --zone-industrial-dark: #F57C00;
+  --zone-industrial-bg: rgba(255, 215, 0, 0.4);
+  --zone-industrial-border: rgba(255, 215, 0, 0.8);
+
+  /* =========================================================================
+     Overlay Colors - Power
+     ========================================================================= */
+  --overlay-power-on: rgba(76, 175, 80, 0.5);
+  --overlay-power-off: rgba(244, 67, 54, 0.5);
+  --overlay-power-source: rgba(139, 195, 74, 0.6);
+
+  /* =========================================================================
+     Overlay Colors - Water
+     ========================================================================= */
+  --overlay-water-on: rgba(33, 150, 243, 0.5);
+  --overlay-water-off: rgba(244, 67, 54, 0.5);
+  --overlay-water-source: rgba(3, 169, 244, 0.6);
+
+  /* =========================================================================
+     Overlay Colors - Traffic
+     ========================================================================= */
+  --overlay-traffic-low: rgba(76, 175, 80, 0.5);
+  --overlay-traffic-medium: rgba(255, 152, 0, 0.5);
+  --overlay-traffic-high: rgba(244, 67, 54, 0.5);
+
+  /* =========================================================================
+     Overlay Colors - Land Value
+     ========================================================================= */
+  --overlay-value-low: rgba(244, 67, 54, 0.5);
+  --overlay-value-fair: rgba(255, 152, 0, 0.5);
+  --overlay-value-good: rgba(255, 235, 59, 0.5);
+  --overlay-value-high: rgba(76, 175, 80, 0.5);
+
+  /* =========================================================================
+     Infrastructure Colors
+     ========================================================================= */
+  --infra-road: #4A4A4A;
+  --infra-road-marking: #D4D4D4;
+  --infra-power-line: #6B6B6B;
+  --infra-power-pole: #8B4513;
+  --infra-water-pipe: #1976D2;
+
+  /* =========================================================================
+     Shadows
+     ========================================================================= */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow-primary: 0 0 15px rgba(74, 144, 217, 0.4);
+  --shadow-glow-success: 0 0 12px rgba(76, 175, 80, 0.4);
+  --shadow-glow-warning: 0 0 12px rgba(255, 152, 0, 0.4);
+  --shadow-glow-error: 0 0 12px rgba(244, 67, 54, 0.4);
+
+  /* =========================================================================
+     Border Radius
+     ========================================================================= */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* =========================================================================
+     Transitions
+     ========================================================================= */
+  --transition-fast: 0.1s ease;
+  --transition-normal: 0.15s ease;
+  --transition-slow: 0.3s ease;
+  --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* =========================================================================
+     Z-Index Scale
+     ========================================================================= */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-toast: 600;
+  --z-tooltip: 700;
+}
+
+/* =============================================================================
+   Scrollbar Styling (Webkit)
+   ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 120, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 120, 0.7);
+}
+
+/* =============================================================================
+   Focus Outline (Accessibility)
+   ============================================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* =============================================================================
+   Loading State
+   ============================================================================= */
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+.loading::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  border: 2px solid transparent;
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =============================================================================
+   Utility Classes
+   ============================================================================= */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.text-numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+/* =============================================================================
+   App Layout
+   ============================================================================= */
+
+.app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.game-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* =============================================================================
+   Screen Shake Animation (for earthquake disaster)
+   ============================================================================= */
+
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0); }
+  5% { transform: translate(-12px, -10px); }
+  10% { transform: translate(10px, 12px); }
+  15% { transform: translate(-14px, 6px); }
+  20% { transform: translate(12px, -12px); }
+  25% { transform: translate(-10px, 14px); }
+  30% { transform: translate(14px, -8px); }
+  35% { transform: translate(-12px, 10px); }
+  40% { transform: translate(8px, -14px); }
+  45% { transform: translate(-8px, 12px); }
+  50% { transform: translate(10px, -10px); }
+  55% { transform: translate(-14px, 8px); }
+  60% { transform: translate(12px, -6px); }
+  65% { transform: translate(-10px, 14px); }
+  70% { transform: translate(8px, -12px); }
+  75% { transform: translate(-6px, 10px); }
+  80% { transform: translate(14px, -8px); }
+  85% { transform: translate(-8px, 6px); }
+  90% { transform: translate(6px, -4px); }
+  95% { transform: translate(-4px, 2px); }
+}
+
+.game-container.screen-shake {
+  animation: screen-shake 1s ease-out;
+}
+
+/* =============================================================================
+   Screensaver Mode
+   ============================================================================= */
+
+.screensaver-hint {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: var(--bg-surface-translucent);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-size: 14px;
+  z-index: var(--z-overlay);
+  backdrop-filter: blur(8px);
+  animation: screensaverHintFadeIn 1s ease-out 2s both;
+  pointer-events: none;
+}
+
+.screensaver-hint kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  padding: 2px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  box-shadow: 
+    0 2px 0 var(--border-default),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 4px;
+}
+
+@keyframes screensaverHintFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Fade out hint after showing for a while */
+.screensaver-hint {
+  animation: 
+    screensaverHintFadeIn 1s ease-out 2s both,
+    screensaverHintFadeOut 1s ease-out 8s both;
+}
+
+@keyframes screensaverHintFadeOut {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+

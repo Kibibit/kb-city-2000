@@ -1,0 +1,116 @@
+/**
+ * GameHUD Component Styles
+ *
+ * Fixed overlay positioning for all UI elements
+ */
+
+/* HUD container */
+.game-hud {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 16px;
+  pointer-events: none;
+  z-index: var(--z-overlay);
+}
+
+/* Make child elements interactive */
+.game-hud > * {
+  pointer-events: auto;
+}
+
+/* HUD sections */
+.game-hud-left,
+.game-hud-center,
+.game-hud-right {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.game-hud-left {
+  flex: 0 0 auto;
+}
+
+.game-hud-center {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.game-hud-right {
+  flex: 0 0 auto;
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+  .game-hud {
+    padding: 20px;
+    gap: 20px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1279px) and (min-width: 768px) {
+  .game-hud {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .game-hud-left,
+  .game-hud-center,
+  .game-hud-right {
+    flex: 0 0 auto;
+  }
+
+  .game-hud-center {
+    order: -1;
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .game-hud-left {
+    flex: 1 1 auto;
+  }
+
+  .game-hud-right {
+    flex: 0 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .game-hud {
+    flex-direction: column;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .game-hud-left,
+  .game-hud-center,
+  .game-hud-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .game-hud-left {
+    order: 1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .game-hud-center {
+    order: 2;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .game-hud-right {
+    order: 3;
+  }
+}

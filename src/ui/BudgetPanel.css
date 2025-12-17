@@ -1,0 +1,261 @@
+/**
+ * BudgetPanel Component Styles
+ */
+
+/* Panel container */
+.budget-panel {
+  background: var(--bg-surface-translucent);
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-md);
+  min-width: 160px;
+}
+
+/* Main balance display */
+.budget-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 0;
+}
+
+.budget-balance-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.budget-balance-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.budget-balance-value {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Balance color states */
+.budget-balance.positive .budget-balance-value {
+  color: var(--status-success);
+}
+
+.budget-balance.negative .budget-balance-value {
+  color: var(--status-error);
+}
+
+.budget-balance.low .budget-balance-value {
+  color: var(--status-warning);
+}
+
+/* Deficit state - pulsing animation */
+.budget-balance.deficit .budget-balance-value {
+  animation: deficit-pulse 1.5s ease-in-out infinite;
+}
+
+.budget-balance.deficit .budget-balance-icon {
+  animation: deficit-icon-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes deficit-pulse {
+  0%, 100% {
+    color: var(--status-error);
+    text-shadow: none;
+  }
+  50% {
+    color: #ff4444;
+    text-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+  }
+}
+
+@keyframes deficit-icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: none;
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 4px rgba(255, 68, 68, 0.6));
+  }
+}
+
+/* Deficit panel styling */
+.budget-panel-deficit {
+  border-color: var(--status-error);
+  box-shadow: var(--shadow-md), 0 0 10px rgba(255, 68, 68, 0.2);
+}
+
+/* Divider between balance and breakdown */
+.budget-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* Monthly breakdown section */
+.budget-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.budget-breakdown-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 4px 0;
+}
+
+/* Individual budget line */
+.budget-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.budget-line-icon {
+  font-size: 14px;
+  line-height: 1;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.budget-line-label {
+  flex: 1;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.budget-line-amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Amount color variations */
+.budget-line-amount.income {
+  color: var(--status-success);
+}
+
+.budget-line-amount.expense {
+  color: var(--status-error);
+}
+
+.budget-line-amount.positive {
+  color: var(--status-success);
+}
+
+.budget-line-amount.negative {
+  color: var(--status-error);
+}
+
+/* Net line styling */
+.budget-line-net {
+  font-weight: 700;
+}
+
+.budget-line-net .budget-line-label {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.budget-line-net .budget-line-amount {
+  font-size: 14px;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 1279px) {
+  .budget-panel {
+    padding: 10px 12px;
+    min-width: 140px;
+  }
+
+  .budget-balance-icon {
+    font-size: 20px;
+  }
+
+  .budget-balance-value {
+    font-size: 16px;
+  }
+
+  .budget-line {
+    font-size: 11px;
+  }
+
+  .budget-line-icon {
+    font-size: 12px;
+    width: 16px;
+  }
+
+  .budget-line-net .budget-line-amount {
+    font-size: 12px;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 767px) {
+  .budget-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    min-width: unset;
+  }
+
+  .budget-balance {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .budget-balance-icon {
+    font-size: 18px;
+  }
+
+  .budget-balance-label {
+    display: none;
+  }
+
+  .budget-balance-value {
+    font-size: 14px;
+  }
+
+  .budget-divider {
+    display: none;
+  }
+
+  .budget-breakdown {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .budget-breakdown-divider {
+    display: none;
+  }
+
+  .budget-line {
+    flex: 0 0 auto;
+  }
+
+  .budget-line-label {
+    display: none;
+  }
+
+  .budget-line-amount {
+    font-size: 11px;
+  }
+}
