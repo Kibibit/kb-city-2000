@@ -9,26 +9,29 @@
  * - Mute toggle with persistence to localStorage
  */
 
+/** Get the base URL for assets */
+const BASE_URL = import.meta.env.BASE_URL || '/';
+
 /** Sound effect names mapped to their file paths */
 const SOUND_EFFECTS = {
-  zone_place: '/audio/sfx_zone_place.mp3',
-  road_place: '/audio/sfx_road_place.mp3',
-  building_complete: '/audio/sfx_building_complete.mp3',
-  bulldoze: '/audio/sfx_bulldoze.mp3',
-  error: '/audio/sfx_error.mp3',
-  milestone: '/audio/sfx_milestone.mp3',
-  ui_click: '/audio/sfx_ui_click.mp3',
-  disaster_earthquake: '/audio/sfx_disaster_earthquake.mp3',
-  disaster_fire: '/audio/sfx_disaster_fire.mp3',
-  disaster_tornado: '/audio/sfx_disaster_tornado.mp3',
+  zone_place: `${BASE_URL}audio/sfx_zone_place.mp3`,
+  road_place: `${BASE_URL}audio/sfx_road_place.mp3`,
+  building_complete: `${BASE_URL}audio/sfx_building_complete.mp3`,
+  bulldoze: `${BASE_URL}audio/sfx_bulldoze.mp3`,
+  error: `${BASE_URL}audio/sfx_error.mp3`,
+  milestone: `${BASE_URL}audio/sfx_milestone.mp3`,
+  ui_click: `${BASE_URL}audio/sfx_ui_click.mp3`,
+  disaster_earthquake: `${BASE_URL}audio/sfx_disaster_earthquake.mp3`,
+  disaster_fire: `${BASE_URL}audio/sfx_disaster_fire.mp3`,
+  disaster_tornado: `${BASE_URL}audio/sfx_disaster_tornado.mp3`,
 } as const;
 
 /** Type for valid sound effect names */
 export type SoundEffectName = keyof typeof SOUND_EFFECTS;
 
 /** Background music paths */
-const BACKGROUND_MUSIC_PATH = '/audio/music_city_ambient_loop.mp3';
-const MENU_MUSIC_PATH = '/audio/music_menu_ambient_loop.mp3';
+const BACKGROUND_MUSIC_PATH = `${BASE_URL}audio/music_city_ambient_loop.mp3`;
+const MENU_MUSIC_PATH = `${BASE_URL}audio/music_menu_ambient_loop.mp3`;
 
 /** LocalStorage key for audio preferences */
 const STORAGE_KEY_MUTED = 'simcity_audio_muted';
