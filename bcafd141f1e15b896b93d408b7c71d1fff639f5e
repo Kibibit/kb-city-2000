@@ -1,0 +1,23 @@
+src/utils/AudioManager.ts
+  aee2f8fb4b8ec866 12-14,17-26,33-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.24",
+  "base_commit_sha": "bcafd141f1e15b896b93d408b7c71d1fff639f5e",
+  "prompts": {
+    "aee2f8fb4b8ec866": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "e3209414-b75f-408b-9013-0a6bef7ae7ee",
+        "model": "claude-4.5-opus-high-thinking"
+      },
+      "human_author": "thatkookooguy <Neilkalman@gmail.com>",
+      "messages": [],
+      "total_additions": 15,
+      "total_deletions": 12,
+      "accepted_lines": 15,
+      "overriden_lines": 0
+    }
+  }
+}
